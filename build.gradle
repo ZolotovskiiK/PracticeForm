@@ -9,7 +9,9 @@ repositories {
 dependencies {
     testImplementation(
             "com.codeborne:selenide:7.16.2",
-            "org.junit.jupiter:junit-jupiter:5.14.2",
+            "org.junit.jupiter:junit-jupiter:6.1.2",
+            "org.junit.jupiter:junit-jupiter-api:6.1.2",
+            "org.junit.jupiter:junit-jupiter-engine:6.1.2",
             "org.seleniumhq.selenium:selenium-java:4.45.0",
             "io.github.bonigarcia:webdrivermanager:6.3.4",
             "org.slf4j:slf4j-simple:2.0.16")
