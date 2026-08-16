@@ -12,11 +12,8 @@ import enums.city.UttarPradesh;
 import utils.DateUtil;
 import utils.EnumUtil;
 
-import java.util.Locale;
-
 public class TestData {
-    Locale enLocale = new Locale("en", "EN");
-    Faker faker = new Faker(enLocale);
+    Faker faker = new Faker();
     DateUtil dateUtil = new DateUtil();
 
     public String
