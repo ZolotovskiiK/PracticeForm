@@ -10,7 +10,7 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class SimpleFormPage {
 
-    SelenideElement
+    private final SelenideElement
             title = $(".text-center"),
             userNameInput = $("#userName"),
             emailInput = $("#userEmail"),

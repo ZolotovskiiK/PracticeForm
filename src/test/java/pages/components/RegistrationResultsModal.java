@@ -9,7 +9,7 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class RegistrationResultsModal {
 
-    SelenideElement
+    private final SelenideElement
             modalWindow = $(".modal-dialog"),
             title = $("#example-modal-sizes-title-lg"),
             table = $(".table-responsive");

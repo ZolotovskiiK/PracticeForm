@@ -1,20 +1,56 @@
 package testdata;
 
+import com.github.javafaker.Faker;
+import enums.Gender;
+import enums.Hobbies;
+import enums.State;
+import enums.Subjects;
+import enums.city.Haryana;
+import enums.city.NCR;
+import enums.city.Rajasthan;
+import enums.city.UttarPradesh;
+import utils.DateUtil;
+import utils.EnumUtil;
+
 public class TestData {
 
-    public static String firstName = "Петр";
-    public static String lastName = "Петров";
-    public static String email = "user@user.com";
-    public static String genter = "Male";
-    public static String mobileNumber = "1234567890";
-    public static String month = "October";
-    public static String year = "1990";
-    public static String day = "25";
-    public static String subject = "English";
-    public static String hobbies = "Sports";
-    public static String photo = "photo.jpg";
-    public static String address = "Novosibirsk";
-    public static String state = "Rajasthan";
-    public static String city = "Jaipur";
-    public static String invalidUserEmail = "1";
+    Faker faker = new Faker();
+    DateUtil dateUtil = new DateUtil();
+
+    public String
+            firstName = faker.name().firstName(),
+            lastName = faker.name().lastName(),
+            email = faker.internet().emailAddress(),
+            gender = EnumUtil.getRandomEnum(Gender.class).getGender(),
+            mobileNumber = faker.phoneNumber().subscriberNumber(10),
+            subject = EnumUtil.getRandomEnum(Subjects.class).getSubject(),
+            hobbies = EnumUtil.getRandomEnum(Hobbies.class).getHobbies(),
+            photo = "photo.jpg",
+            address = faker.address().fullAddress(),
+            state = EnumUtil.getRandomEnum(State.class).getState(),
+            city = getCity(),
+            invalidUserEmail = faker.name().fullName();
+    public String[] birthDate = dateUtil.getFormattedDate(faker.date().birthday()).split(" ");
+
+    private String getCity() {
+        city = null;
+
+        if (state.equals(State.NCR.getState())) {
+            city = EnumUtil.getRandomEnum(NCR.class).getValue();
+        }
+
+        if (state.equals(State.UTTAR_PRADESH.getState())) {
+            city = EnumUtil.getRandomEnum(UttarPradesh.class).getValue();
+        }
+
+        if (state.equals(State.HARYANA.getState())) {
+            city = EnumUtil.getRandomEnum(Haryana.class).getValue();
+        }
+
+        if (state.equals(State.RAJASTHAN.getState())) {
+            city = EnumUtil.getRandomEnum(Rajasthan.class).getValue();
+        }
+
+        return city;
+    }
 }

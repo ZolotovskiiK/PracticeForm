@@ -15,7 +15,7 @@ public class PracticeFormPage {
     CalendarComponent calendarComponent = new CalendarComponent();
     RegistrationResultsModal registrationResultModal = new RegistrationResultsModal();
 
-    SelenideElement
+    private final SelenideElement
             title = $(".practice-form-wrapper h5"),
             firstNameInput = $("#firstName"),
             lastNameInput = $("#lastName"),

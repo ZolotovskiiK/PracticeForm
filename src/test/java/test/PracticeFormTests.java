@@ -2,62 +2,60 @@ package test;
 
 import org.junit.jupiter.api.Test;
 
-import static testdata.TestData.*;
-
 public class PracticeFormTests extends BaseTest {
 
     @Test
     public void registrationTest() {
         practiceFormPage
                 .openPracticeFormPage()
-                .setFirstName(firstName)
-                .setLastName(lastName)
-                .setEmail(email)
-                .setGender(genter)
-                .setMobileNumber(mobileNumber)
-                .setBirthDate(day, month, year)
-                .setSubject(subject)
-                .setHobbies(hobbies)
-                .setPicture(photo)
-                .setAddress(address)
-                .setState(state)
-                .setCity(city)
+                .setFirstName(data.firstName)
+                .setLastName(data.lastName)
+                .setEmail(data.email)
+                .setGender(data.gender)
+                .setMobileNumber(data.mobileNumber)
+                .setBirthDate(data.birthDate[0], data.birthDate[1], data.birthDate[2])
+                .setSubject(data.subject)
+                .setHobbies(data.hobbies)
+                .setPicture(data.photo)
+                .setAddress(data.address)
+                .setState(data.state)
+                .setCity(data.city)
                 .clickSubmitButton()
                 .verifyModal()
-                .verifyModalResults("Student Name", firstName + " " + lastName)
-                .verifyModalResults("Student Email", email)
-                .verifyModalResults("Gender", genter)
-                .verifyModalResults("Mobile", mobileNumber)
-                .verifyModalResults("Date of Birth", day + " " + month + "," + year)
-                .verifyModalResults("Subjects", subject)
-                .verifyModalResults("Hobbies", hobbies)
-                .verifyModalResults("Picture", photo)
-                .verifyModalResults("Address", address)
-                .verifyModalResults("State and City", state + " " + city);
+                .verifyModalResults("Student Name", data.firstName + " " + data.lastName)
+                .verifyModalResults("Student Email", data.email)
+                .verifyModalResults("Gender", data.gender)
+                .verifyModalResults("Mobile", data.mobileNumber)
+                .verifyModalResults("Date of Birth", data.birthDate[0] + " " + data.birthDate[1] + "," + data.birthDate[2])
+                .verifyModalResults("Subjects", data.subject)
+                .verifyModalResults("Hobbies", data.hobbies)
+                .verifyModalResults("Picture", data.photo)
+                .verifyModalResults("Address", data.address)
+                .verifyModalResults("State and City", data.state + " " + data.city);
     }
 
     @Test
     public void fillOnlyRequiredFieldsTest() {
         practiceFormPage
                 .openPracticeFormPage()
-                .setFirstName(firstName)
-                .setLastName(lastName)
-                .setGender(genter)
-                .setMobileNumber(mobileNumber)
+                .setFirstName(data.firstName)
+                .setLastName(data.lastName)
+                .setGender(data.gender)
+                .setMobileNumber(data.mobileNumber)
                 .clickSubmitButton()
                 .verifyModal()
-                .verifyModalResults("Student Name", firstName + " " + lastName)
-                .verifyModalResults("Gender", genter)
-                .verifyModalResults("Mobile", mobileNumber);
+                .verifyModalResults("Student Name", data.firstName + " " + data.lastName)
+                .verifyModalResults("Gender", data.gender)
+                .verifyModalResults("Mobile", data.mobileNumber);
     }
 
     @Test
     public void checkFirstNameFieldValidationTest() {
         practiceFormPage
                 .openPracticeFormPage()
-                .setLastName(lastName)
-                .setGender(genter)
-                .setMobileNumber(mobileNumber)
+                .setLastName(data.lastName)
+                .setGender(data.gender)
+                .setMobileNumber(data.mobileNumber)
                 .clickSubmitButton()
                 .checkFirstNameFieldAlert();
     }
@@ -66,9 +64,9 @@ public class PracticeFormTests extends BaseTest {
     public void checkLastNameFieldValidationTest() {
         practiceFormPage
                 .openPracticeFormPage()
-                .setFirstName(firstName)
-                .setGender(genter)
-                .setMobileNumber(mobileNumber)
+                .setFirstName(data.firstName)
+                .setGender(data.gender)
+                .setMobileNumber(data.mobileNumber)
                 .clickSubmitButton()
                 .checkLastNameFieldAlert();
     }
@@ -77,9 +75,9 @@ public class PracticeFormTests extends BaseTest {
     public void checkPhoneNumberFieldValidationTest() {
         practiceFormPage
                 .openPracticeFormPage()
-                .setFirstName(firstName)
-                .setLastName(lastName)
-                .setGender(genter)
+                .setFirstName(data.firstName)
+                .setLastName(data.lastName)
+                .setGender(data.gender)
                 .clickSubmitButton()
                 .checkMobileNumberFieldAlert();
     }
